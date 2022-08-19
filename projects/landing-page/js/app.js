@@ -18,6 +18,8 @@
  * Great to have comments before crucial code sections within the procedure.
 */
 
+/*global document, IntersectionObserver*/
+
 /**
  * Define Global Variables
  * 
@@ -25,6 +27,7 @@
 const sections = document.querySelectorAll("section");
 const navbarList = document.querySelector("#navbar__list");
 const fixedHeader = document.querySelector("header.page__header");
+
 // used to determine the direction of scrolling
 let direction = 'up';
 let prevYPosition = 0;
@@ -34,6 +37,7 @@ let prevYPosition = 0;
  * Start Helper Functions
  * 
 */
+
 // compares two value of the scrollTop to set the direction in the variable direcdirectioniton
 function setScrollDirection() {
     if (document.body.scrollTop > prevYPosition) {
@@ -66,6 +70,7 @@ function getTargetSection(target) {
     }
 }
 
+// determines if entry section should be updated with the active class
 function shouldUpdate(entry) {
 
     // the fix for the selecting element now when the element is entering we would 
@@ -94,8 +99,8 @@ function shouldUpdate(entry) {
 // build the nav
 const frag = document.createDocumentFragment();
 for (let section of sections) {
-    const linkText = section.dataset.nav; 
-    
+    const linkText = section.dataset.nav;
+
     const navItem = document.createElement("li");
     const navLink = document.createElement("a");
     navLink.textContent = linkText;
@@ -106,8 +111,6 @@ for (let section of sections) {
     frag.appendChild(navItem);
 }
 navbarList.appendChild(frag);
-
-// Add class 'active' to section when near top of viewport
 
 // option that determine when the observer will detect the section
 const observerOptions = {
@@ -143,18 +146,4 @@ sections.forEach(section => {
 
 // Scroll to anchor ID using built-in functionality
 document.documentElement.style.scrollBehavior = "smooth";
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
 
