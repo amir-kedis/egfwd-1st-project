@@ -29,7 +29,6 @@ const fixedHeader = document.querySelector("header.page__header");
 let direction = 'up';
 let prevYPosition = 0;
 
-
 /**
  * End Global Variables
  * Start Helper Functions
@@ -142,7 +141,8 @@ sections.forEach(section => {
 })
 
 
-// Scroll to anchor ID using scrollTO event
+// Scroll to anchor ID using built-in functionality
+document.documentElement.style.scrollBehavior = "smooth";
 
 
 /**
