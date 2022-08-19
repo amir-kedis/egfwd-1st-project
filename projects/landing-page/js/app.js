@@ -89,6 +89,19 @@ function shouldUpdate(entry) {
     return false;
 }
 
+// set the active class for the fixed header nav 
+function setLinkActiveClass(target) {
+    // select the correct link
+    const activeLink = document.querySelector(`[data-section="${target.attributes.id.value}"]`);
+    
+    // remove active from all classes
+    links.forEach(link => {
+        link.classList.remove("menu__link--active");
+    })
+
+    // add the active class to one active link
+    activeLink.classList.add("menu__link--active");
+}
 
 /**
  * End Helper Functions
@@ -106,11 +119,13 @@ for (let section of sections) {
     navLink.textContent = linkText;
     navLink.classList.add("menu__link");
     navLink.setAttribute("href", "#" + section.attributes.id.value)
+    navLink.dataset.section = section.attributes.id.value;
 
     navItem.appendChild(navLink);
     frag.appendChild(navItem);
 }
 navbarList.appendChild(frag);
+const links = document.querySelectorAll(".menu__link");
 
 // option that determine when the observer will detect the section
 const observerOptions = {
@@ -134,6 +149,9 @@ const observer = new IntersectionObserver(entries => {
 
         // add class to target section and remove from others
         setActiveClass(target);
+
+        // set active class to link
+        setLinkActiveClass(target);
     })
 }, observerOptions);
 
