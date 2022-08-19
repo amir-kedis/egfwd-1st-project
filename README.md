@@ -35,3 +35,13 @@ The following is a list of the courses associated with the Front End Nanodegree.
 See below for the Udacity Style Guide used thoroughout the Front End Nanodegree.
 
 * [Nanodegree Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/)
+
+## ! important note 
+* the method to use Intersection Observer to
+* make dynamic header and navbar is shown in these
+* articles:
+[article1](https://blog.webdevsimplified.com/2022-01/intersection-observer/)
+[article2](https://www.smashingmagazine.com/2021/07/dynamic-header-intersection-observer/)
+* it is shown to be much more performant than using scroll events 
+* an provides you with more flexibility
+* I learned the Idea from them and implemented it here

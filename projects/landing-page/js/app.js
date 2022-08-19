@@ -165,3 +165,14 @@ sections.forEach(section => {
 // Scroll to anchor ID using built-in functionality
 document.documentElement.style.scrollBehavior = "smooth";
 
+/*! important note 
+* the method to use Intersection Observer to
+* make dynamic header and navbar is shown in these
+* articles:
+https://blog.webdevsimplified.com/2022-01/intersection-observer/
+https://www.smashingmagazine.com/2021/07/dynamic-header-intersection-observer/
+* it is shown to be much more performant than using scroll events 
+* an provides you with more flexibility
+* 
+* I learned the Idea from them and implemented it here
+*/
