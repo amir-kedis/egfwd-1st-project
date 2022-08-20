@@ -125,6 +125,8 @@ for (let section of sections) {
     frag.appendChild(navItem);
 }
 navbarList.appendChild(frag);
+
+// must be after creating the links
 const links = document.querySelectorAll(".menu__link");
 
 // option that determine when the observer will detect the section
@@ -162,8 +164,31 @@ sections.forEach(section => {
 })
 
 
-// Scroll to anchor ID using built-in functionality
-document.documentElement.style.scrollBehavior = "smooth";
+/** scroll into view functionality
+ * 
+ * adds click event listeners to all current links
+ * scroll into the section related to the clicked link
+ * */ 
+function mountScroll() {
+
+    links.forEach(link => {
+        // add a click event listener to each link
+        link.addEventListener('click', (e) => {
+            // stop normal behavior
+            e.preventDefault();
+
+            // select the scroll section by the data-section attribute
+            const section = document.querySelector(`#${link.dataset.section}`)
+
+            // scroll smoothly to it
+            section.scrollIntoView({
+                behavior: "smooth"
+            });
+        })
+    })
+}
+
+mountScroll();
 
 /*! important note 
 * the method to use Intersection Observer to
